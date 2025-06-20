@@ -18,10 +18,19 @@ mongoose.connect(process.env.MONGO_URI, {
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
 
+// Add logging middleware
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  next();
+});
+
 // Add your routes here
 app.get('/', (req, res) => {
   res.send('Backend is running!');
 });
+
+const usersRouter = require('./routes/users');
+app.use('/api/users', usersRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

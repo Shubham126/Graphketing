@@ -13,7 +13,7 @@ const UserTable = ({ users }) => {
 
   const handleStatusChange = async (user, newStatus, idx) => {
     setUpdating(true);
-    await fetch(`http://localhost:5000/api/users/${user._id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL : 'http://localhost:5000'}/api/users/${user._id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: newStatus })
