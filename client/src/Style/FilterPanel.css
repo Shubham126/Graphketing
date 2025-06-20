@@ -1,0 +1,10 @@
+.filter-clear-small {
+  font-size: 1rem;
+  margin-left: 8px;
+  color: #1746a2;
+  cursor: pointer;
+}
+
+.filter-clear-small:hover {
+  color: #000;
+}
